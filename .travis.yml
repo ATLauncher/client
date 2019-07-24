@@ -4,12 +4,16 @@ matrix:
   include:
     - os: osx
       language: node_js
+      node_js:
+        - '12'
       env:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
     - os: linux
       language: node_js
+      node_js:
+        - '12'
       addons:
         apt:
           sources:
@@ -26,6 +30,8 @@ matrix:
 
     - os: windows
       language: node_js
+      node_js:
+        - '12'
       env:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
@@ -38,7 +44,6 @@ cache:
   directories:
     - node_modules
     - $(npm config get prefix)/lib/node_modules
-    - flow-typed
     - $HOME/.cache/electron
     - $HOME/.cache/electron-builder
 
@@ -71,7 +76,6 @@ before_script:
 script:
   - yarn package:ci
   - yarn lint
-  - yarn flow
   # HACK: Temporarily ignore `yarn test` on linux
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then yarn test; fi
   - yarn build:e2e
