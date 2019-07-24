@@ -20,7 +20,7 @@
     "lint:js:fix": "yarn --silent lint:js --fix",
     "package": "yarn build && electron-builder build --publish never",
     "package:all": "yarn build && electron-builder build -mwl",
-    "package:ci": "yarn postinstall && yarn build && electron-builder --publish always",
+    "package:ci": "yarn postinstall && yarn build && electron-builder",
     "package:linux": "yarn build && electron-builder build --linux",
     "package:win": "yarn build && electron-builder build --win --x64",
     "postinstall": "electron-builder install-app-deps package.json && yarn build:dll",
@@ -91,6 +91,8 @@
       ]
     },
     "linux": {
+      "executableName": "ATLauncher",
+      "artifactName": "${productName}-${version}.${ext}",
       "target": [
         "deb",
         "rpm",

@@ -1,5 +1,6 @@
 # ATLauncher Client
 
+[![Build Status](https://travis-ci.org/ATLauncher/client.svg?branch=master)](https://travis-ci.org/ATLauncher/client)
 [![Discord](https://discordapp.com/api/guilds/117047818136322057/embed.png?style=shield)](https://atl.pw/discordfromgithub)
 
 ## What is it?
