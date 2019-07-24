@@ -2,7 +2,7 @@
   "name": "@atlauncher/client",
   "private": true,
   "productName": "ATLauncher",
-  "version": "4.0.0",
+  "version": "4.0.0-alpha",
   "description": "ATLauncher client using modern web technologies",
   "scripts": {
     "build": "run-p build:main build:renderer",
@@ -61,6 +61,7 @@
   },
   "main": "./app/main.prod.js",
   "build": {
+    "generateUpdatesFilesForAllChannels": true,
     "productName": "ATLauncher",
     "appId": "com.atlauncher.Client",
     "files": [
@@ -84,10 +85,15 @@
         }
       ]
     },
+    "mac": {
+      "category": "public.app-category.games",
+      "target": [
+        "dmg"
+      ]
+    },
     "win": {
       "target": [
-        "nsis",
-        "msi"
+        "nsis"
       ]
     },
     "linux": {
@@ -99,7 +105,7 @@
         "snap",
         "AppImage"
       ],
-      "category": "Development"
+      "category": "Game"
     },
     "directories": {
       "buildResources": "resources",

@@ -14,38 +14,33 @@ const rootReducer = createRootReducer(history);
 
 const configureStore = initialState => {
     // Redux Configuration
-    const middleware = [];
+    const middlewares = [];
 
     // Thunk Middleware
-    middleware.push(thunk);
+    middlewares.push(thunk);
 
-    // Logging Middleware
-    const logger = createLogger({
-        level: 'info',
-        collapsed: true,
-    });
-
-    // Skip redux logs in console during the tests
+    // Logging Middleware when environment is not test
     if (process.env.NODE_ENV !== 'test') {
-        middleware.push(logger);
+        middlewares.push(
+            createLogger({
+                level: 'info',
+                collapsed: true,
+            }),
+        );
     }
 
     // Router Middleware
-    const router = routerMiddleware(history);
-    middleware.push(router);
+    middlewares.push(routerMiddleware(history));
 
-    // Redux DevTools Configuration
-    const actionCreators = {
-        ...counterActions,
-        ...routerActions,
-    };
+    const composeEnhancers = composeWithDevTools({
+        actionCreators: {
+            ...counterActions,
+            ...routerActions,
+        },
+    });
 
     // Create Store
-    const store = createStore(
-        rootReducer,
-        initialState,
-        composeWithDevTools(applyMiddleware(actionCreators, ...middleware)),
-    );
+    const store = createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(...middlewares)));
 
     if (module.hot) {
         module.hot.accept(
