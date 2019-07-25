@@ -75,3 +75,13 @@ script:
   - yarn lint
   - yarn test:all
   - yarn package:ci
+
+after_success:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/c330698682c5abc2e83afd850bc899ecb0b11861/send.sh
+  - chmod +x send.sh
+  - ./send.sh success $DISCORD_WEBHOOK_URL
+
+after_failure:
+  - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/c330698682c5abc2e83afd850bc899ecb0b11861/send.sh
+  - chmod +x send.sh
+  - ./send.sh failure $DISCORD_WEBHOOK_URL
