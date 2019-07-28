@@ -13,7 +13,7 @@
     "dev": "cross-env START_HOT=1 node -r @babel/register ./internals/scripts/CheckPortInUse.js && cross-env START_HOT=1 yarn dev:renderer",
     "dev:main": "cross-env HOT=1 NODE_ENV=development electron ./app/main.dev.babel.js",
     "dev:renderer": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
-    "lint": "run-p lint:css lint:js",
+    "lint": "run-p lint:css lint:ts",
     "lint:css": "stylelint --ignore-path .lintignore \"**/*.*(css|scss)\" --syntax scss",
     "lint:css:fix": "yarn --silent lint:css --fix",
     "lint:ts": "tslint -c tslint.json -p tsconfig.json",
