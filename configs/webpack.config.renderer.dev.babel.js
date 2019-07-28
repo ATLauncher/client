@@ -47,7 +47,7 @@ export default merge.smart(baseConfig, {
         ...(process.env.PLAIN_HMR ? [] : ['react-hot-loader/patch']),
         `webpack-dev-server/client?http://localhost:${port}/`,
         'webpack/hot/only-dev-server',
-        require.resolve('../app/index'),
+        require.resolve('../app/index.tsx'),
     ],
 
     output: {
@@ -58,14 +58,17 @@ export default merge.smart(baseConfig, {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.[jt]sx?$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        cacheDirectory: true,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                        },
                     },
-                },
+                    'ts-loader',
+                ],
             },
             {
                 test: /\.global\.css$/,
@@ -259,13 +262,13 @@ export default merge.smart(baseConfig, {
         before() {
             if (process.env.START_HOT) {
                 console.log('Starting Main Process...');
-                spawn('npm', ['run', 'start-main-dev'], {
+                spawn('npm', ['run', 'dev:main'], {
                     shell: true,
                     env: process.env,
                     stdio: 'inherit',
                 })
-                    .on('close', code => process.exit(code))
-                    .on('error', spawnError => console.error(spawnError));
+                    .on('close', (code) => process.exit(code))
+                    .on('error', (spawnError) => console.error(spawnError));
             }
         },
     },

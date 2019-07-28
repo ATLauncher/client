@@ -1,0 +1,25 @@
+{
+    "extends": ["tslint:recommended", "tslint-react"],
+    "jsRules": {
+        "max-line-length": {
+            "options": [120]
+        }
+    },
+    "rules": {
+        "max-line-length": {
+            "options": [120]
+        },
+        "member-access": false,
+        "ordered-imports": false,
+        "quotemark": false,
+        "no-console": false,
+        "semicolon": false,
+        "jsx-no-lambda": false,
+        "jsx-wrap-multiline": false,
+        "object-literal-sort-keys": false
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
+    }
+}

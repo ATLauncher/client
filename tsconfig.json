@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es2015",
+        "baseUrl": "./",
+        "rootDir": "./",
+        "jsx": "react",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node",
+        "noUnusedLocals": true,
+        "pretty": true,
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "lib": ["es2015", "dom"]
+    },
+    "exclude": ["node_modules", "**/node_modules/*"]
+}

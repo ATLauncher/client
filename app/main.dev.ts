@@ -24,11 +24,13 @@ export default class AppUpdater {
 let mainWindow = null;
 
 if (process.env.NODE_ENV === 'production') {
+    // tslint:disable-next-line
     const sourceMapSupport = require('source-map-support');
     sourceMapSupport.install();
 }
 
 if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
+    // tslint:disable-next-line
     require('electron-debug')();
 }
 
@@ -37,7 +39,9 @@ const installExtensions = async () => {
     const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
     const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'];
 
-    return Promise.all(extensions.map(name => installer.default(installer[name], forceDownload))).catch(console.error);
+    return Promise.all(extensions.map((name) => installer.default(installer[name], forceDownload))).catch(
+        console.error,
+    );
 };
 
 /**
@@ -90,6 +94,6 @@ app.on('ready', async () => {
     menuBuilder.buildMenu();
 
     // Remove this if your app does not use auto updates
-    // eslint-disable-next-line
+    // tslint:disable-next-line
     new AppUpdater();
 });

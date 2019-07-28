@@ -13,11 +13,13 @@ with ease.
 We used the [Electron React Boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate)
 to bootstrap the application as a working base.
 
+-   [Typescript](https://www.typescriptlang.org/)
+-   [Babel](https://babeljs.io/)
 -   [React](https://facebook.github.io/react/)
 -   [Webpack](https://webpack.github.io/)
 -   [Redux](http://redux.js.org/)
 -   [React Router](https://github.com/ReactTraining/react-router)
--   [ESLint](http://eslint.org/)
+-   [TSLint](https://palantir.github.io/tslint/)
 -   [Jest](https://facebook.github.io/jest/)
 -   [Yarn](https://yarnpkg.com/)
 

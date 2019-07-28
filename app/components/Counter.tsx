@@ -1,12 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import routes from '../constants/routes';
+// tslint:disable-next-line:no-var-requires
+const routes = require('../constants/routes.json');
 
-import styles from './Counter.css';
+// tslint:disable-next-line:no-var-requires
+const styles = require('./Counter.css');
 
-const Counter = ({ increment, incrementIfOdd, incrementAsync, decrement, counter }) => (
+interface IProps {
+    increment: () => void;
+    incrementIfOdd: () => void;
+    incrementAsync: () => void;
+    decrement: () => void;
+    counter: number;
+}
+
+const Counter: React.SFC<IProps> = ({ increment, incrementIfOdd, incrementAsync, decrement, counter }) => (
     <div>
         <div className={styles.backButton} data-tid="backButton">
             <Link to={routes.HOME}>
@@ -32,13 +41,5 @@ const Counter = ({ increment, incrementIfOdd, incrementAsync, decrement, counter
         </div>
     </div>
 );
-
-Counter.propTypes = {
-    increment: PropTypes.func.isRequired,
-    incrementIfOdd: PropTypes.func.isRequired,
-    incrementAsync: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
-    counter: PropTypes.number.isRequired,
-};
 
 export default Counter;

@@ -1,17 +1,21 @@
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import * as CounterActions from '../actions/counter';
+import CounterActions from '../actions/counter';
 
 import Counter from '../components/Counter';
 
-function mapStateToProps(state) {
+export interface ICounterState {
+    counter: number;
+}
+
+function mapStateToProps(state: ICounterState) {
     return {
         counter: state.counter,
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch) {
     return bindActionCreators(CounterActions, dispatch);
 }
 

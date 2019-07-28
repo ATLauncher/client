@@ -17,9 +17,8 @@ render(
 );
 
 if (module.hot) {
-    module.hot.accept('./containers/Root', () => {
-        // eslint-disable-next-line global-require
-        const NextRoot = require('./containers/Root').default;
+    module.hot.accept('./containers/Root.tsx', () => {
+        const NextRoot = require('./containers/Root.tsx').default;
         render(
             <AppContainer>
                 <NextRoot store={store} history={history} />
