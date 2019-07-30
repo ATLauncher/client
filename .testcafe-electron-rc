@@ -1,4 +1,4 @@
 {
-  "mainWindowUrl": "./app/app.html",
+  "mainWindowUrl": "./src/renderer/app.html",
   "appPath": "."
 }
