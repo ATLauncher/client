@@ -1,5 +1,6 @@
 import React from 'react';
 import { History } from 'history';
+import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 
@@ -18,4 +19,4 @@ const Root: React.SFC<IProps> = ({ store, history }) => (
     </Provider>
 );
 
-export default Root;
+export default hot(module)(Root);
